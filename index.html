@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Github Bookmarks</title>
+    <script src="vendor/snack/builds/snack-min.js"></script>
+    <script src="vendor/tempo/tempo.js"></script>
+    <script src="lib/js/main.js"></script>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css">
+</head>
+<body>
+<table id="repos" class="zebra-striped">
+    <tr data-template>
+        <td><a href="{{html_url}}">{{name}}</a></td><td>{{description}}</td>
+    </tr>
+    <tr data-template-fallback><td>Sorry, JavaScript required!</td></tr>
+</table>
+</body>
+</html>

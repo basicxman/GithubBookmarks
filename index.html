@@ -9,6 +9,19 @@
         text-align: left;
         font-size: 15px;
       }
+
+      .popover {
+        position: absolute;
+        top: auto;
+        left: 600px;
+      }
+      .popover .inner {
+        min-width: 400px;
+        width: auto;
+      }
+      td.description:hover .popover {
+        display: block;
+      }
     </style>
 </head>
 <body>
@@ -29,7 +42,25 @@
       </thead>
       <tbody id="repos">
         <tr data-template>
-          <td><a href="{{html_url}}">{{owner.login}}/{{name}}</a></td><td>{{description}}</td>
+          <td><a href="{{html_url}}">{{owner.login}}/{{name}}</a></td>
+          <td class="description">
+            {{description}}
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">{{name}}</h3>
+                <div class="content">
+                  <table border="0">
+                    <tr><td>Watchers:</td><td>{{watchers}}</td></tr>
+                    <tr><td>Language:</td><td>{{language}}</td></tr>
+                    <tr><td>Forks:</td><td>{{forks}}</td></tr>
+                    <tr><td>Issues:</td><td>{{open_issues}}</td></tr>
+                    <tr><td>Git:</td><td><code>{{git_url}}</code></td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </td>
         </tr>
         <tr data-template-fallback><td>Sorry, JavaScript required!</td></tr>
       </tbody>

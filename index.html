@@ -5,23 +5,61 @@
 
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css">
     <style type="text/css">
+      .container {
+        padding-top: 20px;
+      }
+
       label {
         text-align: left;
         font-size: 15px;
       }
 
-      .popover {
+      li .popover {
+        position: absolute;
+        top: auto;
+        left: auto;
+        margin-left: -100px;
+        width: 200px;
+      }
+        li .popover.below .arrow {
+          margin-left: 33px;
+        }
+        li:hover .popover {
+          display: block;
+        }
+
+      td .popover {
         position: absolute;
         top: auto;
         left: 600px;
       }
-      .popover .inner {
-        min-width: 400px;
-        width: auto;
+        td .popover .inner {
+          min-width: 400px;
+          width: auto;
+        }
+        td.description:hover .popover {
+          display: block;
+        }
+
+      ul#following {
+        list-style: none;
+        width: 940px;
       }
-      td.description:hover .popover {
-        display: block;
-      }
+        ul#following li {
+          float: left;
+          padding: 0px;
+          margin: 8px;
+        }
+        ul#following li:hover {
+          outline: none;
+          margin: 6px;
+        }
+          ul#following li:hover img {
+            border: 2px solid rgba(82, 168, 236, 0.8);
+            -webkit-box-shadow: 0 2px 16px rgba(82, 168, 236, 0.9);
+            -moz-box-shadow: 0 2px 16px rgba(82, 168, 236, 0.9);
+            box-shadow: 0px 2px 16px rgba(82, 168, 236, 0.9);
+          }
     </style>
 </head>
 <body>
@@ -35,14 +73,32 @@
       <input type="text" name="user" id="user" />
     </form>
 
+    <ul id="following">
+      <li data-template>
+        <a href="http://github.com/{{login}}" target="_blank"><img src="{{avatar_url}}" height="80" /></a>
+        <div class="popover below">
+          <div class="arrow"></div>
+          <div class="inner">
+            <h3 class="title">{{login}}</h3>
+            <div class="content">
+              <code>http://github.com/{{login}}</code>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
     <table class="zebra-striped">
-      <caption id="header" data-template>{{num}} repos being watched!</caption>
+      <caption>
+        <span id="numrepos"><strong data-template>{{num}}</strong></span> repos being watched!</br >
+        Watching <span id="numfollowing"><strong data-template>{{following}}</strong></span> people!
+      </caption>
       <thead>
         <tr><th>Name</th><th>Description</th></tr>
       </thead>
       <tbody id="repos">
         <tr data-template>
-          <td><a href="{{html_url}}">{{owner.login}}/{{name}}</a></td>
+          <td><a target="_blank" href="{{html_url}}">{{owner.login}}/{{name}}</a></td>
           <td class="description">
             {{description}}
             <div class="popover below">

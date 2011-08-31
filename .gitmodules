@@ -1,0 +1,6 @@
+[submodule "vendor/snack"]
+	path = vendor/snack
+	url = git://github.com/rpflorence/snack.git
+[submodule "vendor/tempo"]
+	path = vendor/tempo
+	url = git://github.com/twigkit/tempo.git
